@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import axios from 'axios';
+import {axiosWithAuth} from '../../utils/axiosWithAuth';
 
 const Login = props => {
     const credentials = {
@@ -12,20 +12,28 @@ const Login = props => {
     const changeHandler = e => {
         e.persist()
         setLogin({
-            ...credentials,
+            ...login,
             [e.target.name] : e.target.value
         })
     }
 
     const submitHandler = e => {
-        e.preventDefault
-        // axios goes here
+        e.preventDefault()
+        axiosWithAuth()
+        .post('https://web22washouts.herokuapp.com/api/login/', login)
+        .then(res => {
+            localStorage.setItem('Token', res.data.key)
+            props.history.push('/home'); // need home component
+        })
+        .catch(res=> {
+            console.log("No dice", res);
+        })
     }
 
     return (
         <div>
             <h1>Login</h1>
-            <form>
+            <form onSubmit={submitHandler}>
                 <input type='text' name='username' placeholder='Username' onChange={changeHandler} />
                 <input type='password' name='password' placeholder='Password' onChange={changeHandler} />
                 <button>Login</button>
