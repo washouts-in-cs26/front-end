@@ -19,10 +19,10 @@ const Register = props => {
         })
     }
 
-    const submitHandler = e => {
-        e.preventDefault
-        // axios code
-    }
+    // const submitHandler = e => {
+    //     e.preventDefault
+    //     // axios code
+    // }
 
     return (
         <div>
