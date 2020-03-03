@@ -3,20 +3,16 @@ import up from '../../images/arrowUp.png'
 import down from '../../images/arrowDown.png'
 import left from '../../images/arrowLeft.png'
 import right from '../../images/arrowRight.png'
-import { axiosWithAuth } from '../../utils/axiosWithAuth'
+import {movePlayer} from '../../store/actions'
+
+import {connect} from 'react-redux'
 
 
-function Controls() {
-    const [player, setPlayer] = useState([])
+function Controls({movePlayer}) {
 
-    const movePlayer = (input) => {
-        axiosWithAuth()
-        .post('url', {direction: input})
-        .then(res => {
-            setPlayer(res.data)
-            console.log(res)
-        })
-    }
+    // const changeDirection = (input) => {
+    //     movePlayer(input)
+    // }
 
     return (
         <div>
@@ -28,4 +24,4 @@ function Controls() {
     )
 }
 
-export default Controls
+export default connect({movePlayer})(Controls)
