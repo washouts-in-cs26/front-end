@@ -21,6 +21,21 @@ export const getData = () => {
 	};
 };
 
+export const MOVE_PLAYER_SUCCESS = 'MOVE_PLAYER_SUCCESS'
+export const MOVE_PLAYER_FAILURE = 'MOVE_PLAYER_FAILURE'
+
+export const movePlayer = input => dispatch => {
+    axiosWithAuth().post("URL", input) // add adv/move/ endpoint
+    .then(res => {
+        const moveData = res.data
+        dispatch({ type: MOVE_PLAYER_SUCCESS, payload: moveData })
+    })
+    .catch(err => {
+        dispatch({ type: MOVE_PLAYER_FAILURE, payload: `{err}` })
+        console.log('move error: ', err)
+    })
+}
+
 export const FETCH_INIT_START = "FETCH_INIT_START"
 export const FETCH_INIT_SUCCESS = "FETCH_INIT_SUCCESS"
 export const FETCH_INIT_FAILURE = "FETCH_INIT_FAILURE"
