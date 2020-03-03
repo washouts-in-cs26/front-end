@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {axiosWithAuth} from '../../utils/axiosWithAuth';
+import axios from 'axios';
 
 const Login = props => {
     const credentials = {
-        username: "",
-        password: "",
+        username: '',
+        password: ''
     }
 
     const [login, setLogin] = useState(credentials)
@@ -24,6 +25,8 @@ const Login = props => {
         .then(res => {
             localStorage.setItem('Token', res.data.key)
             props.history.push('/home'); // need home component
+            console.log("Yay!!!")
+            console.log(res.data.key)
         })
         .catch(res=> {
             console.log("No dice", res);
