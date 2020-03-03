@@ -7,7 +7,7 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth'
 
 
 function Controls() {
-    const [player, setPlayer] = useState({})
+    const [player, setPlayer] = useState([])
 
     const movePlayer = (input) => {
         axiosWithAuth()
