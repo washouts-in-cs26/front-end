@@ -1,9 +1,12 @@
 import React from 'react';
+import './home.css'
 
-const Home = (props) => {
+
+const Home = () => {
+ 
     return (
         <div>
-            <h1>Hello</h1>
+            <img src="https://media.giphy.com/media/ehaU0nwrUjlprO0uKg/giphy.gif"></img>
         </div>
     )
 }
