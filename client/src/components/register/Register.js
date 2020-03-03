@@ -24,8 +24,9 @@ const Register = props => {
         axios
         .post('https://web22washouts.herokuapp.com/api/registration/', register)
         .then(res => {
-            localStorage.setItem('token', res.data.payload)
-            console.log(res.data.payload)
+            localStorage.setItem('token', res.data.key)
+            console.log(res.data.key)
+            console.log(res)
             props.history.push('/login')
         })
         .catch(res => {
