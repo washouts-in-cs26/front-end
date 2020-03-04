@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import up from '../../images/arrowUp.png'
 import down from '../../images/arrowDown.png'
 import left from '../../images/arrowLeft.png'
