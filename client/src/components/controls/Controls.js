@@ -1,22 +1,23 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import up from '../../images/arrowUp.png'
 import down from '../../images/arrowDown.png'
 import left from '../../images/arrowLeft.png'
 import right from '../../images/arrowRight.png'
+
 import { axiosWithAuth } from '../../utils/axiosWithAuth'
 import './Controls.css'
 
-function Controls() {
-    const [player, setPlayer] = useState([])
+import {movePlayer} from '../../store/actions'
 
-    const movePlayer = (input) => {
-        axiosWithAuth()
-        .post('url', {direction: input})
-        .then(res => {
-            setPlayer(res.data)
-            console.log(res)
-        })
-    }
+import {connect} from 'react-redux'
+
+
+
+function Controls({movePlayer}) {
+
+    // const changeDirection = (input) => {
+    //     movePlayer(input)
+    // }
 
     return (
         <div className='d-pad'>
@@ -28,4 +29,4 @@ function Controls() {
     )
 }
 
-export default Controls
+export default connect({movePlayer})(Controls)
