@@ -24,7 +24,7 @@ const Login = props => {
         .post('https://web22washouts.herokuapp.com/api/login/', login)
         .then(res => {
             localStorage.setItem('Token', res.data.key)
-            props.history.push('/home'); // need home component
+            props.history.push('/game'); // need home component
             console.log("Yay!!!")
             console.log(res.data.key)
         })

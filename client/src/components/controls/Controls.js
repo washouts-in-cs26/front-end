@@ -8,20 +8,32 @@ import {movePlayer} from '../../store/actions'
 import {connect} from 'react-redux'
 
 
-function Controls({movePlayer}) {
+function Controls(props) {
 
-    // const changeDirection = (input) => {
-    //     movePlayer(input)
-    // }
+    const {mapData, playerData, initInfo, isFetching, error, getData, getInit, movePlayer} = props
+
+    const changeDirection = (input) => {
+        movePlayer(input)
+    }
 
     return (
         <div>
-            <img src={up} onClick = {() => movePlayer('n')} alt='up'/>
-            <img src={down} onClick = {() => movePlayer('s')} alt='up'/>
-            <img src={left} onClick = {() => movePlayer('w')} alt='up'/>
-            <img src={right} onClick = {() => movePlayer('e')} alt='up'/>
+            <img src={up} onClick = {() => changeDirection('n')} alt='up'/>
+            <img src={down} onClick = {() => changeDirection('s')} alt='up'/>
+            <img src={left} onClick = {() => changeDirection('w')} alt='up'/>
+            <img src={right} onClick = {() => changeDirection('e')} alt='up'/>
         </div>
     )
 }
 
-export default connect({movePlayer})(Controls)
+const mapStateToProps = state => {
+    return {
+       mapData: state.mapData,
+       playerData: state.playerData,
+       initInfo: state.initInfo,
+       isFetching: state.isFetching,
+       error: state.error
+    }
+}
+
+export default connect(mapStateToProps, {movePlayer})(Controls)

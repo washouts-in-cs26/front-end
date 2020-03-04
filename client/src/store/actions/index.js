@@ -27,7 +27,7 @@ export const MOVE_PLAYER_SUCCESS = 'MOVE_PLAYER_SUCCESS'
 export const MOVE_PLAYER_FAILURE = 'MOVE_PLAYER_FAILURE'
 
 export const movePlayer = input => dispatch => {
-    axiosWithAuth().post("URL", input) // add adv/move/ endpoint
+    axiosWithAuth().post("https://web22washouts.herokuapp.com/api/adv/move/", {direction: input}) // add adv/move/ endpoint
     .then(res => {
         const moveData = res.data
         dispatch({ type: MOVE_PLAYER_SUCCESS, payload: moveData })
@@ -45,10 +45,10 @@ export const FETCH_INIT_FAILURE = "FETCH_INIT_FAILURE"
 
 export const getInit = () => dispatch => {
     dispatch({type: FETCH_INIT_START})
-    axiosWithAuth().get("URL HERE") // add /init endpoint
+    axiosWithAuth().get("https://web22washouts.herokuapp.com/api/adv/init") // add /init endpoint
         .then(response => {
             dispatch({type: FETCH_INIT_SUCCESS, payload: response.data})
-            console.log("getInit response", response)
+            console.log("getInit response", response.data)
         })
         .catch(err => {
             dispatch({type: FETCH_INIT_FAILURE, payload: `${err}`})
