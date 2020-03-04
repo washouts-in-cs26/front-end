@@ -3,7 +3,7 @@ import up from '../../images/arrowUp.png'
 import down from '../../images/arrowDown.png'
 import left from '../../images/arrowLeft.png'
 import right from '../../images/arrowRight.png'
-import {movePlayer} from '../../store/actions'
+import {movePlayer, getData, getInit} from '../../store/actions'
 
 import {connect} from 'react-redux'
 
@@ -14,6 +14,8 @@ function Controls(props) {
 
     const changeDirection = (input) => {
         movePlayer(input)
+        getData()
+        getInit()
     }
 
     return (
@@ -36,4 +38,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {movePlayer})(Controls)
+export default connect(mapStateToProps, {movePlayer, getData, getInit})(Controls)
