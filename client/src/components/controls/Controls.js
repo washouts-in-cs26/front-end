@@ -7,7 +7,6 @@ import {movePlayer, getData, getInit} from '../../store/actions'
 
 import {connect} from 'react-redux'
 
-
 function Controls(props) {
 
     const {mapData, playerData, initInfo, isFetching, error, getData, getInit, movePlayer} = props
