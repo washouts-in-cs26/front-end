@@ -3,30 +3,38 @@ import up from '../../images/arrowUp.png'
 import down from '../../images/arrowDown.png'
 import left from '../../images/arrowLeft.png'
 import right from '../../images/arrowRight.png'
-
-import { axiosWithAuth } from '../../utils/axiosWithAuth'
-import './Controls.css'
-
-import {movePlayer} from '../../store/actions'
+import {movePlayer, getData, getInit} from '../../store/actions'
 
 import {connect} from 'react-redux'
 
+function Controls(props) {
 
+    const {mapData, playerData, initInfo, isFetching, error, getData, getInit, movePlayer} = props
 
-function Controls({movePlayer}) {
-
-    // const changeDirection = (input) => {
-    //     movePlayer(input)
-    // }
+    const changeDirection = (input) => {
+        movePlayer(input)
+        getData()
+        getInit()
+    }
 
     return (
-        <div className='d-pad'>
-            <img id='up' src={up} onClick = {() => movePlayer('n')} alt='up'/>
-            <img id='down' src={down} onClick = {() => movePlayer('s')} alt='down'/>
-            <img id='left' src={left} onClick = {() => movePlayer('w')} alt='left'/>
-            <img id='right' src={right} onClick = {() => movePlayer('e')} alt='right'/>
+        <div>
+            <img src={up} onClick = {() => changeDirection('n')} alt='up'/>
+            <img src={down} onClick = {() => changeDirection('s')} alt='up'/>
+            <img src={left} onClick = {() => changeDirection('w')} alt='up'/>
+            <img src={right} onClick = {() => changeDirection('e')} alt='up'/>
         </div>
     )
 }
 
-export default connect({movePlayer})(Controls)
+const mapStateToProps = state => {
+    return {
+       mapData: state.mapData,
+       playerData: state.playerData,
+       initInfo: state.initInfo,
+       isFetching: state.isFetching,
+       error: state.error
+    }
+}
+
+export default connect(mapStateToProps, {movePlayer, getData, getInit})(Controls)

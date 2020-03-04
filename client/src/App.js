@@ -6,6 +6,9 @@ import Controls from './components/controls/Controls';
 import Login from './components/login/Login';
 import Home from './components/home/home';
 import NavBar from './components/nav/NavBar'
+import MapComponent from './components/map/map'
+import MainView from './components/mainView/mainView'
+import PrivateRoute from './utils/privateRoute/privateRoute'
 
 function App() {
   return (
@@ -15,6 +18,8 @@ function App() {
       <Route path='/login' component={Login} />
       <Route exact path='/' component={Home}/>
       <Route path="/move" component={Controls} />
+      <PrivateRoute path='/game' component={MainView} />
+      {/* <PrivateRoute path='/game' component={MapComponent} /> */}
     </div>
   );
 }

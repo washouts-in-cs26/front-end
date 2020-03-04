@@ -2,7 +2,9 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-const currentRoomDescription = ({ initInfo }) => {
+const CurrentRoomDescription = (props) => {
+    const {mapData, playerData, initInfo, isFetching, error, getData, getInit} = props
+
 	return (
 		<div>
 			<h1>ROOM: {initInfo.title}</h1>
@@ -18,11 +20,14 @@ const currentRoomDescription = ({ initInfo }) => {
 	);
 };
 
-const mapStateToProps = (state) => {
-	return {
-		initInfo: state.initInfo,
-		error: ''
-	};
-};
+const mapStateToProps = state => {
+    return {
+       mapData: state.mapData,
+       playerData: state.playerData,
+       initInfo: state.initInfo,
+       isFetching: state.isFetching,
+       error: state.error
+    }
+}
 
-export default connect(mapStateToProps)(currentRoomDescription);
+export default connect(mapStateToProps)(CurrentRoomDescription);
