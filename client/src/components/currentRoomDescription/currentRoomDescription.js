@@ -1,13 +1,28 @@
-import React from 'react'
+import React from 'react';
 
-const currentRoomDescription = () => {
-     return (
-         <div>
-             <h1>title (get initInfo to display here)</h1>
-             <h2>description</h2>
-             <h3>Players with you: //get players from initInfo.players</h3>
-         </div>
-     )
-}
+import { connect } from 'react-redux';
 
-export default currentRoomDescription
+const currentRoomDescription = ({ initInfo }) => {
+	return (
+		<div>
+			<h1>ROOM: {initInfo.title}</h1>
+			<h2>DESCRIPTION: {initInfo.description}</h2>
+			<h3>
+				PLAYERS WITH YOU:{' '}
+				{initInfo.players &&
+					initInfo.players.map((user) => {
+						return `${user}, `;
+					})}
+			</h3>
+		</div>
+	);
+};
+
+const mapStateToProps = (state) => {
+	return {
+		initInfo: state.initInfo,
+		error: ''
+	};
+};
+
+export default connect(mapStateToProps)(currentRoomDescription);

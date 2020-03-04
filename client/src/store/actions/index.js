@@ -29,6 +29,7 @@ export const movePlayer = input => dispatch => {
     .then(res => {
         const moveData = res.data
         dispatch({ type: MOVE_PLAYER_SUCCESS, payload: moveData })
+        getInit() // this will get our current player's room's description
     })
     .catch(err => {
         dispatch({ type: MOVE_PLAYER_FAILURE, payload: `{err}` })

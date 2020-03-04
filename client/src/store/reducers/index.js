@@ -19,7 +19,58 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
     switch(action.type) {
+        case FETCH_DATA_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: ''
+            };
+        case FETCH_DATA_SUCCESS:
+            return {
+                ...state,
+                mapData: action.payload,
+                isFetching: false,
+                error: ''
+            };
+        case FETCH_DATA_FAILURE:
+            return {
+                ...state,
+                isFetching: false,
+                error: action.payload
+            }
+        case MOVE_PLAYER_SUCCESS:
+            return {
+                ...state,
+                playerData: action.payload,
+                isFetching: false,
+                error: ''
+            }
+        case MOVE_PLAYER_FAILURE:
+            return {
+                ...state,
+                isFetching: false,
+                error: action.payload
+            }
+        case FETCH_INIT_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: action.payload
+            }
+        case FETCH_INIT_SUCCESS:
+            return {
+                ...state,
+                initInfo: action.payload,
+                isFetching: false,
+                error: ''
+            }
+        case FETCH_INIT_FAILURE:
+            return {
+                ...state,
+                isFetching: false,
+                error: action.payload
+            }
         default:
             return state;
     }
-}
+};
