@@ -6,6 +6,7 @@ import Controls from './components/controls/Controls';
 import Login from './components/login/Login';
 import Home from './components/home/home';
 import NavBar from './components/nav/NavBar'
+import Map from './components/map/map'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path='/login' component={Login} />
       <Route exact path='/' component={Home}/>
       <Route path="/move" component={Controls} />
+      <Route path='/map' component={Map} />
     </div>
   );
 }

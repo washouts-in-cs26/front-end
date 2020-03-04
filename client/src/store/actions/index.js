@@ -9,9 +9,11 @@ export const getData = () => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_DATA_START });
 		axios
-			.get('URL HERE') // add /map endpoint
+			.get('https://web22washouts.herokuapp.com/api/adv/map') // add /map endpoint
 			.then((res) => {
+                console.log('RESPONSE', res)
                 const roomData = res.data
+                console.log('ROOMDATA', roomData)
                 dispatch({ type: FETCH_DATA_SUCCESS, payload: roomData})
             })
             .catch(err => {
