@@ -9,9 +9,11 @@ export const getData = () => {
 	return (dispatch) => {
 		dispatch({ type: FETCH_DATA_START });
 		axios
-			.get('URL HERE') // add /map endpoint
+			.get('https://web22washouts.herokuapp.com/api/adv/map') // add /map endpoint
 			.then((res) => {
+                console.log('RESPONSE', res)
                 const roomData = res.data
+                console.log('ROOMDATA', roomData)
                 dispatch({ type: FETCH_DATA_SUCCESS, payload: roomData})
             })
             .catch(err => {
@@ -25,10 +27,11 @@ export const MOVE_PLAYER_SUCCESS = 'MOVE_PLAYER_SUCCESS'
 export const MOVE_PLAYER_FAILURE = 'MOVE_PLAYER_FAILURE'
 
 export const movePlayer = input => dispatch => {
-    axiosWithAuth().post("URL", input) // add adv/move/ endpoint
+    axiosWithAuth().post("https://web22washouts.herokuapp.com/api/adv/move/", {direction: input}) // add adv/move/ endpoint
     .then(res => {
         const moveData = res.data
         dispatch({ type: MOVE_PLAYER_SUCCESS, payload: moveData })
+        getInit() // this will get our current player's room's description
     })
     .catch(err => {
         dispatch({ type: MOVE_PLAYER_FAILURE, payload: `{err}` })
@@ -42,10 +45,10 @@ export const FETCH_INIT_FAILURE = "FETCH_INIT_FAILURE"
 
 export const getInit = () => dispatch => {
     dispatch({type: FETCH_INIT_START})
-    axiosWithAuth().get("URL HERE") // add /init endpoint
+    axiosWithAuth().get("https://web22washouts.herokuapp.com/api/adv/init") // add /init endpoint
         .then(response => {
             dispatch({type: FETCH_INIT_SUCCESS, payload: response.data})
-            console.log("getInit response", response)
+            console.log("getInit response", response.data)
         })
         .catch(err => {
             dispatch({type: FETCH_INIT_FAILURE, payload: `${err}`})
