@@ -4,7 +4,7 @@ import down from '../../images/arrowDown.png'
 import left from '../../images/arrowLeft.png'
 import right from '../../images/arrowRight.png'
 import { axiosWithAuth } from '../../utils/axiosWithAuth'
-
+import './Controls.css'
 
 function Controls() {
     const [player, setPlayer] = useState([])
@@ -19,11 +19,11 @@ function Controls() {
     }
 
     return (
-        <div>
-            <img src={up} onClick = {() => movePlayer('n')} alt='up'/>
-            <img src={down} onClick = {() => movePlayer('s')} alt='up'/>
-            <img src={left} onClick = {() => movePlayer('w')} alt='up'/>
-            <img src={right} onClick = {() => movePlayer('e')} alt='up'/>
+        <div className='d-pad'>
+            <img id='up' src={up} onClick = {() => movePlayer('n')} alt='up'/>
+            <img id='down' src={down} onClick = {() => movePlayer('s')} alt='down'/>
+            <img id='left' src={left} onClick = {() => movePlayer('w')} alt='left'/>
+            <img id='right' src={right} onClick = {() => movePlayer('e')} alt='right'/>
         </div>
     )
 }

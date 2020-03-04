@@ -1,0 +1,36 @@
+.d-pad {
+    width: 200px;
+    height: 200px;
+    background: #404040;
+    position: relative;
+    border-radius: 25%;
+}
+
+img {
+    max-width: 70px;
+    max-height: 70px;
+}
+
+#up {
+    position: absolute;
+    top: 1%;
+    left: 32%;
+}
+
+#down {
+    position: absolute;
+    bottom: 2%;
+    left: 32%;
+}
+
+#left {
+    position: absolute;
+    left: 1%;
+    top: 32%;
+}
+
+#right {
+    position: absolute;
+    right: 2%;
+    top: 32%;
+}

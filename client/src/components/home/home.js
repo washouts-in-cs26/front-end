@@ -5,8 +5,8 @@ import './home.css'
 const Home = () => {
  
     return (
-        <div>
-            <img src="https://media.giphy.com/media/ehaU0nwrUjlprO0uKg/giphy.gif"></img>
+        <div className='home-page'>
+            <img src="https://media.giphy.com/media/ehaU0nwrUjlprO0uKg/giphy.gif" className='anim'/>
         </div>
     )
 }
