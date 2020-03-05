@@ -19,7 +19,6 @@ function App() {
       <Route exact path='/' component={Home}/>
       <Route path="/move" component={Controls} />
       <PrivateRoute path='/game' component={MainView} />
-      {/* <PrivateRoute path='/game' component={MapComponent} /> */}
     </div>
   );
 }
