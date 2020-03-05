@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-
+import './Register.css'
 
 const Register = props => {
     const credentials = {
@@ -38,7 +38,7 @@ const Register = props => {
         <div>
             <div>
             <h1>Register</h1>
-            <form onSubmit={submitHandler}>
+            <form onSubmit={submitHandler} className='register-form'>
             <input type='text' name='username' placeholder="Username" onChange={changeHandler} value={register.username}/>
             <input type='password' name='password1' placeholder="Password" onChange={changeHandler} value={register.password1}/>
             <input type='password' name='password2' placeholder="Type that Password Again, Please" onChange={changeHandler} value={register.password2}/>

@@ -1,0 +1,15 @@
+.game-view {
+    display:flex;
+}
+
+.map {
+    margin: 2% 10%;
+}
+
+.details {
+    margin-left: 5%;
+}
+
+.controls {
+    margin-top: 50%;
+}
