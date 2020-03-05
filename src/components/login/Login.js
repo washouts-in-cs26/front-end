@@ -20,7 +20,7 @@ const Login = props => {
 
     const submitHandler = e => {
         e.preventDefault()
-        axiosWithAuth()
+        axios
         .post('https://web22washouts.herokuapp.com/api/login/', login)
         .then(res => {
             localStorage.setItem('Token', res.data.key)
