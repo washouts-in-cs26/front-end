@@ -7,6 +7,8 @@ import {movePlayer, getData, getInit} from '../../store/actions'
 
 import {connect} from 'react-redux'
 
+import './Controls.css'
+
 function Controls(props) {
 
     const {mapData, playerData, initInfo, isFetching, error, getData, getInit, movePlayer} = props
@@ -19,10 +21,10 @@ function Controls(props) {
 
     return (
         <div>
-            <img src={up} onClick = {() => changeDirection('n')} alt='up'/>
-            <img src={down} onClick = {() => changeDirection('s')} alt='up'/>
-            <img src={left} onClick = {() => changeDirection('w')} alt='up'/>
-            <img src={right} onClick = {() => changeDirection('e')} alt='up'/>
+            <img src={up} onClick = {() => changeDirection('n')} alt='up' id='up'/>
+            <img src={down} onClick = {() => changeDirection('s')} alt='up' id='down'/>
+            <img src={left} onClick = {() => changeDirection('w')} alt='up' id='left'/>
+            <img src={right} onClick = {() => changeDirection('e')} alt='up' id='right'/>
         </div>
     )
 }

@@ -18,7 +18,7 @@ function App() {
       <Route path='/login' component={Login} />
       <Route exact path='/' component={Home}/>
       <Route path="/move" component={Controls} />
-      <PrivateRoute path='/game' component={MainView} />
+      <Route path='/game' component={MainView} />
       {/* <PrivateRoute path='/game' component={MapComponent} /> */}
     </div>
   );

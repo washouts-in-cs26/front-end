@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {axiosWithAuth} from '../../utils/axiosWithAuth';
 import axios from 'axios';
+import './Login.css'
 
 const Login = props => {
     const credentials = {
@@ -20,7 +21,7 @@ const Login = props => {
 
     const submitHandler = e => {
         e.preventDefault()
-        axiosWithAuth()
+        axios
         .post('https://web22washouts.herokuapp.com/api/login/', login)
         .then(res => {
             localStorage.setItem('Token', res.data.key)
@@ -36,7 +37,7 @@ const Login = props => {
     return (
         <div>
             <h1>Login</h1>
-            <form onSubmit={submitHandler}>
+            <form onSubmit={submitHandler} className='login-form'>
                 <input type='text' name='username' placeholder='Username' onChange={changeHandler} />
                 <input type='password' name='password' placeholder='Password' onChange={changeHandler} />
                 <button>Login</button>
